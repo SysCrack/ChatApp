@@ -17,15 +17,15 @@ function Sidebar() {
 
     const filteredUsers = showOnlineOnly ? users.filter((user) => onlineUsers.includes(user._id)) : users; 
   return (
-    <aside className={`h-full w-20 lg:w-72 border-r border-base-300 flex-col transition-all duration-200 ${selectedUser? "hidden md:flex" : "flex"}`}>
+    <div className={`w-full h-full sm:w-72 border-r border-base-300 flex-col transition-all duration-200 ${selectedUser? "hidden md:flex" : "flex"}`}>
         {/* Header */}
         <div className="border-b border-base-300 w-full p-5">
-            <div className="flex items-center justify-center lg:justify-start gap-2">
+            <div className="flex lg:justify-start gap-2">
                 <Users className="size-5 md:size-6" />
-                <span className="font-medium hidden lg:block">Contacts</span>
+                <span className="font-medium block">Contacts</span>
             </div>
             {/* TODO online filter toggle and also search bar */}
-            <div className="mt-3 hidden lg:flex items-center gap-2">
+            <div className="mt-3 flex items-center gap-2">
                 <label className="cursor-pointer flex items-center gap-2">
                     <input
                     type="checkbox"
@@ -50,18 +50,18 @@ function Sidebar() {
                     ${selectedUser?._id === user._id ? "bg-base-200 ring-1 ring-base-300" : ""}
                     `}
                 >
-                    <div className="relative mx-auto lg:mx-0">
+                    <div className="relative lg:mx-0">
                         <img 
                         src= {user.profilePic || "/default-avatar.png"}
                         alt="user.name"
-                        className="size-10 lg:size-12 object-cover rounded-full" />
+                        className="size-12 object-cover rounded-full" />
                         {onlineUsers.includes(user._id) && (
                             <span 
-                            className="absolute bottom-0 right-0 size-2 lg:size-3 bg-green-500 rounded-full ring-2 ring-zinc-900"
+                            className="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full ring-2 ring-zinc-900"
                             />
                         )}    
                     </div>
-                    <div className="hidden lg:block text-left min-w-0">
+                    <div className="block text-left min-w-0">
                         <div className="font-medium truncate">{user.fullName}</div>
                         <div className="text-sm text-zinc-400">
                             {onlineUsers.includes(user._id) ? "Online" : "Offline"}
@@ -75,7 +75,7 @@ function Sidebar() {
                 <div className="text-center text-zinc-500 py-4">No online users</div>
             )}
         </div>
-    </aside>
+    </div>
   )
 }
 
